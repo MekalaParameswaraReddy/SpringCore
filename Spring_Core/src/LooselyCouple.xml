@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   
+   <bean id="csv" class="com.paramesh.looselycouple.CsvGenerator" />
+   <bean id="pdf" class="com.paramesh.looselycouple.PdfGenerator" />
+   <bean id="xml" class="com.paramesh.looselycouple.XmlGenerator" />
+   
+    <bean id="output" class="com.paramesh.looselycouple.OutputHelper" >
+    <property name="fileGenerator" ref="csv"></property>
+    </bean>
+
+</beans>

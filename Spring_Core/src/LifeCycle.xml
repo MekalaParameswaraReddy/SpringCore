@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   
+   	<!-- Singleton &  prototype are used in spring core -->
+   <!-- request, session & global-session are used with web applications -->
+   
+	<!-- Singleton :- only one isntance per spring container :: it is default  init-method="customInit"  destroy-method="customDestroy" -->
+	<bean id="LC" class="com.paramesh.lifecycle.LifeCycleImpl" scope="singleton" init-method="customInit"  destroy-method="customDestroy" >
+	<property name="msg" value="spring non - life cycle message" />
+	</bean>
+
+</beans>

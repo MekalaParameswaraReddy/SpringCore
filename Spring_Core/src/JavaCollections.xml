@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="javaCollections" class="com.paramesh.collections.JavaCollections">
+		<property name="namesList">
+			<list>
+				<value>INDIA</value>
+				<value>Pakistan</value>
+				<value>USA</value>
+				<value>Chaina</value>
+				<ref bean="person1" />
+				<ref bean="person2" />
+				<ref bean="person3" />
+			</list>
+		</property>
+
+		<property name="groupSet">
+			<set>
+				<value>1</value>
+				<value>2</value>
+				<value>1</value>
+				<value>2</value>
+				<ref bean="person1" />
+				<ref bean="person2" />
+				<ref bean="person3" />
+			</set>
+		</property>
+		
+		<property name="itemAndPrice">
+			<map>
+			<entry key="onion" value="10"></entry>
+			<entry key="tomoto" value="40"></entry>
+			<entry key="person1" value-ref="person1"></entry>
+			<entry key="person2" value-ref="person2"></entry>
+			<entry key="person3" value-ref="person3"></entry>
+			</map>
+		</property>
+		
+		<property name="connectionProperties">
+			<props>
+			<prop key="driver">com.driver.oracle.OracleDriver</prop>
+			<prop key="url">localhost:5121</prop>
+			<prop key="user">52035009</prop>
+			<prop key="pwd">NHMMIS52</prop>
+			<prop key="person2">person2</prop>
+			</props>
+		</property>
+
+	</bean>
+
+	<bean id="person1" class="com.paramesh.collections.Person">
+		<property name="id" value="1"></property>
+		<property name="name" value="paramesh"></property>
+		<property name="address" value="HYD"></property>
+	</bean>
+	<bean id="person2" class="com.paramesh.collections.Person">
+		<property name="id" value="2"></property>
+		<property name="name" value="Ravi"></property>
+		<property name="address" value="Chennai"></property>
+	</bean>
+	<bean id="person3" class="com.paramesh.collections.Person">
+		<property name="id" value="3"></property>
+		<property name="name" value="Jhon"></property>
+		<property name="address" value="USA"></property>
+	</bean>
+
+</beans>

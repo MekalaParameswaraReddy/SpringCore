@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- This is the default mode, you need to wire your bean via ‘ref’ attribute. -->
+	<bean id="NoOrDefault" class="com.paramesh.autowiring.Customer">
+		<property name="custName" value="Customer is : former"></property>
+		<property name="person" ref="per">
+		</property>
+	</bean>
+
+	<!-- Auto-wire a bean by property name. In this case, since the name of 
+		“person” bean is same with the name of the “customer” bean’s property (“person”), 
+		so, Spring will auto wired it via setter method – “setPerson(Person person)“. -->
+	<bean id="By_type" class="com.paramesh.autowiring.Customer"
+		autowire="byName">
+		<property name="custName" value="Customer is : former"></property>
+	</bean>
+
+	<!-- Auto-wire a bean by property data type. In this case, since the data 
+		type of “person” bean is same as the data type of the “customer” bean’s property 
+		(Person object), so, Spring will auto wired it via setter method – “setPerson(Person 
+		person)“. -->
+	<bean id="By_Name" class="com.paramesh.autowiring.Customer"
+		autowire="byName">
+		<property name="custName" value="Customer is : former"></property>
+	</bean>
+
+	<!-- Auto-wire a bean by property data type in constructor argument. In 
+		this case, since the data type of “Date” is same as the constructor argument 
+		data type in “customer” bean’s property (Date date), so, Spring auto wired 
+		it via constructor method -->
+	<bean id="constr" class="com.paramesh.autowiring.Customer"
+		autowire="constructor">
+		<property name="custName" value="Customer is : former"></property>
+		<property name="person" ref="per"></property>
+	</bean>
+	
+	<!-- Autodetect functionality is applied when used with the 2.5 and 2.0 schemas. It has been deprecate from 3.0+ -->
+	<!-- <bean id="auto_Detect" class="com.paramesh.autowiring.Customer"
+		autowire="autodetect">
+		<property name="custName" value="Customer is : former"></property>
+	</bean> -->
+
+	<bean id="person" class="com.paramesh.autowiring.Person">
+		<property name="id" value="10"></property>
+		<property name="name" value="param"></property>
+	</bean>
+
+	<bean id="per" class="com.paramesh.autowiring.Person">
+		<property name="id" value="10"></property>
+		<property name="name" value="param_"></property>
+	</bean>
+
+	<bean id="date1" class="java.util.Date" />
+</beans>

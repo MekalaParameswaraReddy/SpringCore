@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   
+   	<!-- Singleton &  prototype are used in spring core -->
+   <!-- request, session & global-session are used with web applications -->
+   
+	<!-- Singleton :- only one isntance per spring container :: it is default -->
+	<bean id="SB" class="com.paramesh.scope.ScopesImpl" scope="singleton" init-method="customInit"  destroy-method="customDestroy">
+	
+	<!-- prototype :- A new isntance every time bean is requested  -->
+	<!-- <bean id="SB" class="com.paramesh.scope.ScopesImpl" scope="prototype"> -->
+	
+	<!-- request :- Sinele bean instance per HTTP request -->
+	<!-- <bean id="SB" class="com.paramesh.scope.ScopesImpl" scope="request"> -->
+	
+	<!-- session :- Single bean instance per HTTP session -->
+	<!-- <bean id="SB" class="com.paramesh.scope.ScopesImpl" scope="session">  -->
+	
+	<!-- global-session :- ingle bean instance per global HTTP session   -->
+	<!-- <bean id="SB" class="com.paramesh.scope.ScopesImpl" scope="global-session"> --> 
+		<property name="beanScope" value="singleton!" />
+	</bean>
+	
+	<bean id="HelloBean_container" class="com.paramesh.scope.ScopesImpl" >
+	<property name="beanScope" value="BeanFactory - creation" /> 		
+	</bean>
+
+</beans>
